@@ -29,15 +29,16 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+   <script type="text/javascript">
+  // Redirige vers / et recharge si la page n'est pas trouvée (404 sur Render)
+  const validPaths = ["/", "/admin/connexion-ultra-secrete-2025"];
+  const isStatic = window.location.pathname.startsWith("/static") || window.location.pathname.startsWith("/assets");
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  if (!isStatic && !validPaths.includes(window.location.pathname)) {
+    window.history.replaceState(null, null, "/");
+    window.location.reload();
+  }
+</script>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
